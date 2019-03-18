@@ -41,7 +41,6 @@ var Frame = function(content){
 };
 
 var Warfield = function (masterDOM, frames) {
-    console.log(masterDOM);
     this.frameList = [];
 
     frames = JSON.parse(frames);
@@ -51,17 +50,11 @@ var Warfield = function (masterDOM, frames) {
         this.frameList.push(frame);
     }
 
-    console.log(this.frameList.length);
     for(var i = 0; i < this.frameList.length; i++){
-        console.log(this.frameList[i]);
         const currentFrameList = this.frameList[i];
         window.setTimeout(function(){
-            console.log("cleaning frame");
             masterDOM.empty();
             masterDOM.append(currentFrameList.content_objects);
-            console.log(masterDOM);
-            console.log(currentFrameList.content_objects);
-            console.log("print complete");
         },1000*(i+1));
     }
 
