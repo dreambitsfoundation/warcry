@@ -2,7 +2,7 @@
 Warcry is a war field game built in PHP in which 4 Battleships fight against each other in a 10x10 war field.
 
 ## **1. Introduction**
-WarCry is developed following the Object-Oriented Programming principles of PHP. 
+WarCry is developed following the Object-Oriented Programming principles using PHP. 
 It contains the following classes that construct and plays the game.
 
 1. **Game** (_game.php_): This is the main class that constructs the game *War-field* and instanciate all other utility class and start the game.
@@ -20,19 +20,19 @@ It contains the following classes that construct and plays the game.
 #### _Note_: What you see in the UI is the playback of the actual game that was played by the computer itself before giving it to the UI in form of an array of _Frame_ class instance maintained sequentially.
 
 ## **2. Know your Warships**
-This game is played by 4 warships who battle against each other LWarship (1 Nos.), LWarship (1 Nos.), DotWarship (2 Nos.).
+This game is played by 4 warships who battle against each other LWarship (1 Nos.), IWarship (1 Nos.), DotWarship (2 Nos.).
 Description as follows:
 1. **LWarship**:  
    Size: 4 Cells (3 Vertical, 1 Horizontal - towards right)  
    Shape: L  
    Canon Position: Cell 2 from top (_Vertically_).
    
-2. **IWarship**:
+2. **IWarship**:    
    Size: 4 Cells (4 Vertical)  
    Shape: I  
    Canon Position: Cell 3 from top (_Vertically_).
    
-3. **DotWarship**:
+3. **DotWarship**:  
    Size: 1 Cell (1 Vertical)  
    Shape: Dot  
    Canon Position: Cell 1 from top (_Vertically_).
@@ -53,19 +53,23 @@ On a POST request to the index.php script, it creates a **Game** class instance.
 
 1. First it initializes all 100 Cell instances for 10x10 war field.
 2. Then it creates relationship between all the cells and their neighbouring cells.
-3. It initiates all the four warships 1 each for both LWarship and IWarship class and 2 for DotWarship class, by first randomly selecting a cordinate for each of the warship then testing if the warship can be laid out here following the rules:  
+3. It initiates all the four warships 1 each for both LWarship and IWarship class and 2 for DotWarship class, by first randomly selecting a coordinate for each of the warship then testing if the warship can be laid out here following the rules:  
   a. Warship must be laid out entirely within the war field cells.  
   b. None of the cell fields required to layout the war ship should be pre-occupied.  
   Only if the test passes then the warship is laid out in the war field by declaring the cells _occupied_ else the entire layout process is restarted for current war ship subject.
 4. Once the war ships are laid out, initial frame of the war field is documented.
 5. Then the game begins, where each of the warship takes a shot turn by turn following the steps:  
-   a. Rotate the canon of the warship dynamically in one of the eight directions (it can also fire diagonally).  
+   a. Rotate the canon of the warship randomly in one of the eight directions (it can fire both diagonally and stright covering all directions).   
    b. Take a shot and capture each frame until the war head hit a miss or another war ship.  
    c. On each step check if the current is the last cell in the direction the war head is travelling then mark it MISSED FIRE or it the current cell is pre-occupied by a war ship which is still active, in that case set the hit war ship sunk.  
    d. Keep repeating the steps from a through c, untill any 3/4 ships have sunk.
 6. Once the game is over, **Game** instance render the **frames** array in JSON string format to the UI object **Warfield** along with the HTML DOM element that will contain all the cells.
 7. Warfield object instance generates layout for each of the frames in the **frames** array hence parsed as JSON Object.
-8. Finally renders all the frames into the HTML DOM element hence provided to the **Game** instance at 1 second time interval per frame. _Where you are able to watch complete playback of the actual game that the computer just played_.
+8. Finally renders all the frames into the HTML DOM element hence provided to the **Game** instance at 1 second time interval per frame.  
+_Where you are able to watch complete playback of the actual game that the computer just played_.
+
+## **5. Modification**
+We can modify the code to allow the war ships to move from their initial positions while palying the game to increase the complexity and difficulty level of the game.
 
 ## Have Fun !!
 
