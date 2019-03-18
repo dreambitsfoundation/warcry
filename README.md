@@ -1,7 +1,7 @@
 # WarCry
 Warcry is a war field game built in PHP in which 4 Battleships fight against each other in a 10x10 war field.
 
-## *Introduction*
+## **1. Introduction**
 WarCry is developed following the Object-Oriented Programming principles of PHP. 
 It contains the following classes that construct and plays the game.
 
@@ -19,7 +19,7 @@ It contains the following classes that construct and plays the game.
 
 #### _Note_: What you see in the UI is the playback of the actual game that was played by the computer itself before giving it to the UI in form of an array of _Frame_ class instance maintained sequentially.
 
-## *Know your Warships*
+## **2. Know your Warships**
 This game is played by 4 warships who battle against each other LWarship (1 Nos.), LWarship (1 Nos.), DotWarship (2 Nos.).
 Description as follows:
 1. **LWarship**:  
@@ -37,7 +37,7 @@ Description as follows:
    Shape: Dot  
    Canon Position: Cell 1 from top (_Vertically_).
 
-## *Game Play*
+## **3. Game Play**
 
 #### _Note_: If not configured manually your PHP setup may run out of memory in-case of longer running game session. In such case refresh the page and when asked for **FORM RESUBMISSION** confirmation, click **YES**.
 
@@ -48,7 +48,7 @@ Description as follows:
 2. Click **Start Game** button to send a POST request to the server script that will render the game.  
    _Note_: Incase of **Allowed Memory Size Error** refresh the page to restart the game (When asked about **Form Resubmission Confirmation**. Click **YES**), you may also increase the Allowed memory in the php.ini file.
 
-## **How Game Works**
+## **4. How Game Works**
 On a POST request to the index.php script, it creates a **Game** class instance. that works in the following way:
 
 1. First it initializes all 100 Cell instances for 10x10 war field.
