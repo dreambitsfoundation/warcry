@@ -61,7 +61,7 @@ On a POST request to the index.php script, it creates a **Game** class instance.
 5. Then the game begins, where each of the warship takes a shot turn by turn following the steps:  
    a. Rotate the canon of the warship dynamically in one of the eight directions (it can also fire diagonally).  
    b. Take a shot and capture each frame until the war head hit a miss or another war ship.  
-   c. On each step check if the current is the last cell in the direction the war head is travelling then mark it MISSED FIRE or it the current cell is pre-occupied by a war ship which is still active, in that case set the hit war ship sunk.
+   c. On each step check if the current is the last cell in the direction the war head is travelling then mark it MISSED FIRE or it the current cell is pre-occupied by a war ship which is still active, in that case set the hit war ship sunk.  
    d. Keep repeating the steps from a through c, untill any 3/4 ships have sunk.
 6. Once the game is over, **Game** instance render the **frames** array in JSON string format to the UI object **Warfield** along with the HTML DOM element that will contain all the cells.
 7. Warfield object instance generates layout for each of the frames in the **frames** array hence parsed as JSON Object.
