@@ -43,3 +43,9 @@ Description as follows:
 
 #### _Note_: When the _index.php_ page is loaded server receives the **REQUEST** method as **GET** and the Welcome Page is rendered. When you click **Start Game** button it does a POST request to the server script. Server Script will only run the game if the **REQUEST** method is **POST**.
 
+1. Inside the root directory open the **index.php** file in your browser using PHP server of your choice. You can use a simple Apache Server which is PHP enabled.  
+   _index.php_ will show welcome page if the request is GET by default, it will render the game if the request is POST.
+2. Click **Start Game** button to send a POST request to the server script that will render the game.  
+   _Note_: Incase of **Allowed Memory Size Error** refresh the page to restart the game (When asked to **Form Resubmission Confirmation** click **YES**).
+   
+   
