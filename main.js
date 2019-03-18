@@ -22,11 +22,9 @@ var Frame = function(content){
         var index = 0;
         for(var x = 0; x < max; x++){
             var max_width = max*(x+1);
-            //console.log("Total: " + max_width);
             var DOM = document.createElement("div");
             DOM.className = "row";
             while(index < max_width){
-                //console.log(index);
                 DOM.appendChild(this.cells[index++].DOM);
             }
             this.content_objects.push(DOM);
@@ -47,19 +45,11 @@ var Warfield = function (masterDOM, frames) {
     this.frameList = [];
 
     frames = JSON.parse(frames);
-    //console.log(frames);
     for(var i = 0; i< frames.length; i++){
         var frame = new Frame(frames[i]);
         frame.generateLayout(10);
         this.frameList.push(frame);
-        // this.frameList[i] = new Frame(frames[i]);
-        // this.frameList[i].generateLayout(10);
     }
-
-    // console.log(this.frameList[0]);
-    // var currentFrameList = this.frameList[0];
-    // masterDOM.empty();
-    // masterDOM.append(currentFrameList.content_objects);
 
     console.log(this.frameList.length);
     for(var i = 0; i < this.frameList.length; i++){
@@ -73,8 +63,6 @@ var Warfield = function (masterDOM, frames) {
             console.log(currentFrameList.content_objects);
             console.log("print complete");
         },1000*(i+1));
-        // masterDOM.empty();
-        // masterDOM.append(currentFrameList.content_objects);
     }
 
 };
