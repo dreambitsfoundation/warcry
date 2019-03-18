@@ -46,6 +46,31 @@ Description as follows:
 1. Inside the root directory open the **index.php** file in your browser using PHP server of your choice. You can use a simple Apache Server which is PHP enabled.  
    _index.php_ will show welcome page if the request is GET by default, it will render the game if the request is POST.
 2. Click **Start Game** button to send a POST request to the server script that will render the game.  
-   _Note_: Incase of **Allowed Memory Size Error** refresh the page to restart the game (When asked to **Form Resubmission Confirmation** click **YES**).
-   
-   
+   _Note_: Incase of **Allowed Memory Size Error** refresh the page to restart the game (When asked about **Form Resubmission Confirmation**. Click **YES**), you may also increase the Allowed memory in the php.ini file.
+
+## **How Game Works**
+On a POST request to the index.php script, it creates a **Game** class instance. that works in the following way:
+
+1. First it initializes all 100 Cell instances for 10x10 war field.
+2. Then it creates relationship between all the cells and their neighbouring cells.
+3. It initiates all the four warships 1 each for both LWarship and IWarship class and 2 for DotWarship class, by first randomly selecting a cordinate for each of the warship then testing if the warship can be laid out here following the rules:  
+  a. Warship must be laid out entirely within the war field cells.  
+  b. None of the cell fields required to layout the war ship should be pre-occupied.  
+  Only if the test passes then the warship is laid out in the war field by declaring the cells _occupied_ else the entire layout process is restarted for current war ship subject.
+4. Once the war ships are laid out, initial frame of the war field is documented.
+5. Then the game begins, where each of the warship takes a shot turn by turn following the steps:  
+   a. Rotate the canon of the warship dynamically in one of the eight directions (it can also fire diagonally).  
+   b. Take a shot and capture each frame until the war head hit a miss or another war ship.  
+   c. On each step check if the current is the last cell in the direction the war head is travelling then mark it MISSED FIRE or it the current cell is pre-occupied by a war ship which is still active, in that case set the hit war ship sunk.
+   d. Keep repeating the steps from a through c, untill any 3/4 ships have sunk.
+6. Once the game is over, **Game** instance render the **frames** array in JSON string format to the UI object **Warfield** along with the HTML DOM element that will contain all the cells.
+7. Warfield object instance generates layout for each of the frames in the **frames** array hence parsed as JSON Object.
+8. Finally renders all the frames into the HTML DOM element hence provided to the **Game** instance at 1 second time interval per frame. _Where you are able to watch complete playback of the actual game that the computer just played_.
+
+## Have Fun !!
+
+
+#### Developed By: Gourab Saha
+#### Email: gourabsaha@outlook.in (also for Skype)
+#### Contact: +91-9774696698
+#### LinkedIn: https://www.linkedin.com/in/gourabsaha
