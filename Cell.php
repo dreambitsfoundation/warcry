@@ -180,6 +180,34 @@ class Cell{
     {
         $this->is_hit = $is_hit;
     }
+
+    public function has_empty_surroundings(){
+        if($this->getCR() != NULL && $this->getCR()->isOccupied()){
+            return FALSE;
+        }
+        if($this->getBR() != NULL && $this->getBR()->isOccupied()){
+            return FALSE;
+        }
+        if($this->getBC() != NULL && $this->getBC()->isOccupied()){
+            return FALSE;
+        }
+        if($this->getBL() != NULL && $this->getBL()->isOccupied()){
+            return FALSE;
+        }
+        if($this->getCL() != NULL && $this->getCL()->isOccupied()){
+            return FALSE;
+        }
+        if($this->getTL() != NULL && $this->getTL()->isOccupied()){
+            return FALSE;
+        }
+        if($this->getTC() != NULL && $this->getTC()->isOccupied()){
+            return FALSE;
+        }
+        if($this->getTR() != NULL && $this->getTR()->isOccupied()){
+            return FALSE;
+        }
+        return TRUE;
+    }
 }
 
 ?>

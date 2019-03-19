@@ -113,7 +113,7 @@ class IWarship extends Warship {
 
         $init = 0;
         while($init < 4){
-            if($scope === NULL || $scope->isOccupied()){
+            if($scope === NULL || $scope->isOccupied() || !$scope->has_empty_surroundings()){
                 return FALSE;
             }
             $scope = $scope->BC;
@@ -131,7 +131,7 @@ class DotWarship extends Warship {
     }
 
     public function test_layout(){
-        if($this->init_point == NULL || $this->init_point->isOccupied()){
+        if($this->init_point == NULL || $this->init_point->isOccupied() || !$this->init_point->has_empty_surroundings()){
             return FALSE;
         }
         return TRUE;
@@ -175,24 +175,24 @@ class LWarship extends Warship {
         while($init < 3){
             switch ($init){
                 case 0:
-                    if($scope === NULL || $scope->isOccupied()){
+                    if($scope === NULL || $scope->isOccupied() || !$scope->has_empty_surroundings()){
                         return FALSE;
                     }else{
                         $scope = $scope->BC;
-                        if($scope === NULL || $scope->isOccupied()) {
+                        if($scope === NULL || $scope->isOccupied() || !$scope->has_empty_surroundings()) {
                             return FALSE;
                         }
                     }
                     break;
                 case 2:
                     $scope = $scope->CR;
-                    if($scope === NULL || $scope->isOccupied()){
+                    if($scope === NULL || $scope->isOccupied() || !$scope->has_empty_surroundings()){
                         return FALSE;
                     }
                     break;
                 default:
                     $scope = $scope->BC;
-                    if($scope === NULL || $scope->isOccupied()){
+                    if($scope === NULL || $scope->isOccupied() || !$scope->has_empty_surroundings()){
                         return FALSE;
                     }
             }
